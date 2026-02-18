@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HK CyberSecure Academy - Beautiful Investor Deck</title>
+    <style>
+        /* Modern CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .presentation {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Slide Container */
+        .slide-container {
+            display: grid;
+            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        /* Individual Slide */
+        .slide {
+            background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(14, 165, 233, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(14, 165, 233, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0ea5e9, #3b82f6, #8b5cf6);
+        }
+
+        /* Slide Header */
+        .slide-header {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(14, 165, 233, 0.1);
+            color: #0ea5e9;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .slide-title {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #0ea5e9, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .slide-subtitle {
+            color: #94a3b8;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        /* Slide Content */
+        .slide-content {
+            flex: 1;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #0ea5e9;
+            background: rgba(14, 165, 233, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0ea5e9;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: #cbd5e1;
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        /* Financial Cards */
+        .financial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .financial-card {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(59, 130, 246, 0.1));
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .financial-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0ea5e9;
+            margin-bottom: 0.5rem;
+        }
+
+        .financial-label {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Lists */
+        .feature-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #e2e8f0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #0ea5e9;
+            font-weight: bold;
+        }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #0ea5e9, #3b82f6, #8b5cf6);
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            text-align: center;
+            flex: 1;
+            padding: 0 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-dot {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: white;
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: #0ea5e9;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-desc {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        /* Alert Boxes */
+        .alert {
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+            border-left: 4px solid;
+        }
+
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: #f59e0b;
+            color: #fbbf24;
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: #10b981;
+            color: #34d399;
+        }
+
+        .alert-danger {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: #ef4444;
+            color: #f87171;
+        }
+
+        /* Team Cards */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .team-card {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: 800;
+        }
+
+        .team-name {
+            font-weight: 700;
+            color: #0ea5e9;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-role {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .slide-footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            color: #0ea5e9;
+            font-size: 1.25rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid,
+            .financial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+            
+            .slide {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <h1 style="text-align: center; margin-bottom: 3rem; font-size: 3rem; background: linear-gradient(90deg, #0ea5e9, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            HK CyberSecure Academy
+        </h1>
+        
+        <div class="slide-container">
+            <!-- Slide 1: Title -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Slide 1</div>
+                    <h2 class="slide-title">Critical Infrastructure Cybersecurity Compliance Training</h2>
+                    <p class="slide-subtitle">Addressing Hong Kong's Most Urgent Cybersecurity Need</p>
+                </div>
+                
+                <div class="slide-content">
+                    <div class="financial-grid">
+                        <div class="financial-card">
+                            <div class="financial-value">Jan 1, 2026</div>
+                            <div class="financial-label">Regulatory Deadline</div>
+                        </div>
+                        <div class="financial-card">
+                            <div class="financial-value">27%</div>
+                            <div class="financial-label">Incident Growth</div>
+                        </div>
+                        <div class="financial-card">
+                            <div class="financial-value">HK$3.6B</div>
+                            <div class="financial-label">Annual Losses</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <strong>Urgent Need:</strong> Critical infrastructure operators face HK$10M fines for non-compliance with new regulations effective January 2026.
+                    </div>
+                </div>
+                
+                <div class="slide-footer">
+                    <div class="logo">HK CyberSecure Academy</div>
+                    <div>Investor Pitch Deck • February 2026</div>
+                </div>
+            </div>
+
+            <!-- Slide 2: The Problem -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Slide 2</div>
+                    <h2 class="slide-title">The Cybersecurity Crisis</h2>
+                    <p class="slide-subtitle">Hong Kong's critical infrastructure is vulnerable</p>
+                </div>
+                
+                <div class="slide-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">27%</div>
+                            <div class="stat-label">Annual increase in cyber incidents (HKCERT 2026)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">HK$3.6B</div>
+                            <div class="stat-label">Cybercrime losses in 2025</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">5%</div>
+                            <div class="stat-label">Critical infrastructure had vulnerabilities (2024)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">72%</div>
+                            <div class="stat-label">AI-driven phishing attacks</div>
+                        </div>
+                    </div>
+                    
+                    <ul class="feature-list">
+                        <li>Lack specialized cybersecurity expertise</li>
+                        <li>Don't understand new regulatory requirements</li>
+                        <li>Face up to HK$10M fines for non-compliance</li>
+                        <li>72-hour reporting deadlines create pressure</li>
+                    </ul>
+                </div>
+                
+                <div class="slide-footer">
+                    <div class="logo">The Problem</div>
+                    <div>Source: HKCERT 2026 Report</div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Market Opportunity -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Slide 3</div>
+                    <h2 class="slide-title">Market Opportunity</h2>
+                    <p class="slide-subtitle">Immediate, substantial, and growing</p>
+                </div>
+                
+                <div class="slide-content">
+                    <div class="financial-grid">
+                        <div class="financial-card">
+                            <div class="financial-value">HK$1.2B+</div>
+                            <div class="financial-label">Annual Market Size</div>
+                        </div>
+                        <div class="financial-card">
+                            <div class="financial-value">25-30%</div>
+                            <div class="financial-label">CAGR Growth</div>
+                        </div>
+                        <div class="financial-card">
+                            <div class="financial-value">500+</div>
+                            <div class="financial-label">Target Operators</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot">🔴</div>
+                            <div class="timeline-title">NOW</div>
+                            <div class="timeline-desc">Critical training window</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">🟡</div>
+                            <div class="timeline-title">Jan 1, 2026</div>
+                            <div class="timeline-desc">Regulation takes effect</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">🟢</div>
+                            <div class="timeline-title">Q1 2026</div>
+                            <div class="timeline-desc">First reports due</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <strong>Sweet Spot:</strong> No HK-focused, compliance-specific training providers exist for critical infrastructure.
+                    </div>
+                </div>
+                
+                <div class="slide-footer">
+                    <div class="logo">Market Analysis</div>
+                    <div>500+ critical infrastructure operators</div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Our Solution -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Slide 4</div>
+                    <h2 class="slide-title">Our Solution</h2>
+                    <p class="slide-subtitle">3-Day Intensive Compliance Training</p>
+                </div>
+                
+                <div class="slide-content">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot">📋</div>
+                            <div class="timeline-title">Day 1</div>
+                            <div class="timeline-desc">Regulatory Framework & Risk Assessment</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">🛡️</div>
+                            <div class="timeline-title">Day 2</div>
+                            <div class="timeline-desc">Security Controls & Implementation</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">🚨</div>
+                            <div class="timeline-title">Day 3</div>
+                            <div class="timeline-desc">Incident Response & Compliance Reporting</div>
+                        </div>
+                    </div>
+                    
+                    <ul class="feature-list">
+                        <li>HK-specific content with local case studies</li>
+                        <li>Practical templates, checklists, implementation guides</li>
+                        <li>Expert instructors with regulatory experience</li>
+                        <li>12-month access to updates and Q&A portal</li>
+                        <li>HKCERT-endorsed completion certificate</li>
+                    </ul>
+                    
+                    <div class="alert alert-success">
+                        <strong>Price:</strong> HKD $12,000 per participant | HKD $150,000 for in-house sessions
+                    </div>
+                </div>
+                
+                <div class="slide-footer">
+                    <div class="logo">Our Solution</div>
+                    <div>HKCERT Certified Training</div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Business Model -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Slide 5</div>
+                    <h2 class="slide-title">Business Model</h2>
+                    <p class="slide-subtitle">High-margin, scalable training business</p>
+                </div>
+                
+                <div class="slide-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">HKD $12,000</div>
+                            <div class="stat-label">Corporate Training per participant</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">HKD $10,800</div>
+                            <div class="stat-label">Group discount (10+ participants)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">HKD $150,000</div>
+                            <div class="stat-label">In-house delivery per session</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">HKD $50-200K</div>
+                            <div class="stat-label">Consulting services per engagement</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot">🎯</div>
+                            <div class="timeline-title">Year 1</div>
+                            <div class="timeline-desc">200 participants across 15-20 sessions</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">🚀</div>
+                            <div class="timeline-title">Year 2</div>
+                            <div class="timeline-desc">400 participants + consulting</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">🌟</div>
+                            <div class="timeline-title">Year 3</div>
+                            <div class="timeline-desc">600 participants + software</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slide-footer">
+                    <div class="logo">Revenue Model</div>
+                    <div>Multiple high-margin streams</div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Financial Projections -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Slide 6</div>
+                    <h2 class="slide-title">Financial Projections</h2>
+                    <p class="slide-subtitle">Strong unit economics & rapid growth</p>
+                </div>
+                
+                <div class="slide-content">
+                    <div class="financial-grid">
+                        <div class="financial-card">
+                            <div class="financial-value">HKD $3.2M</div>
+                            <div class="financial-label">Year 1 Revenue</div>
+                        </div>
+                        <div class="financial-card">
+                            <div class="financial-value">HKD $450K</div>
+                            <div class="financial-label">Year 1 Net Profit</div>
+                        </div>
+                        <div class="financial-card">
+                            <div class="financial-value">14%</div>
+                            <div class="financial-label">Year 1 Margin</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">HKD $2,400</div>
+                            <div class="stat-label">Customer Acquisition Cost</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">HKD $36,000</div>
+                            <div class="stat-label">Lifetime Value (3-year)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">14 months</div>
+                            <div class="stat-label">Payback Period</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">56%</div>
+                            <div class="stat-label">Year 1 ROI</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <strong>Growth:</strong> Year 2: HKD $6.4M revenue (100% growth) | Year 3: HKD $9.6M revenue (50% growth)
+                    </div>
+                </div>
+                
+                <div class="slide-footer">
+                    <div class="logo">Financials</div>
+                    <div>Strong profitability from Year 1</div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Competitive Advantage -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Slide 7</div>
+                    <h2 class="slide-title">Competitive Advantage</h2>
+                    <p class="slide-subtitle">Why we win in Hong Kong</p>
+                </div>
+                
+                <div class="slide-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">🏛️</div>
+                            <div class="stat-label">Regulatory Expertise: Deep HK-specific knowledge</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">🤝</div>
+                            <div class="stat-label">Industry Partnerships: HKCERT & HKPC</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">🇭🇰</div>
+                            <div class="stat-label">Local Context: HK case studies & bilingual</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">🛠️</div>
+                            <div class="stat-label">Practical Delivery: Templates & real-world</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <strong>Market Gap:</strong> No other provider offers HK-focused, compliance-specific training for critical infrastructure.
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <span class="badge">First Mover Advantage</span>
+                        <span class="badge">Regulatory Relationships</span>
+                        <span class="badge">Local Expertise</span>
+                        <span class="badge">Practical Focus</span>
+                    </div>
+                </div>
+                
+                <div class="slide-footer">
+                    <div class="logo">Competitive Edge</div>
+                    <div>Unmatched HK expertise</div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Investment Ask -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Slide 8</div>
+                    <h2 class="slide-title">Investment Ask</h2>
+                    <p class="slide-subtitle">HKD $800,000 for 20-25% equity</p>
+                </div>
+                
+                <div class="slide-content">
+                    <div class="financial-grid">
+                        <div class="financial-card">
+                            <div class="financial-value">25%</div>
+                            <div class="financial-label">Curriculum Development</div>
+                        </div>
+                        <div class="financial-card">
+                            <div class="financial-value">37.5%</div>
+                            <div class="financial-label">Team & Operations</div>
+                        </div>
+                        <div class="financial-card">
+                            <div class="financial-value">25%</div>
+                            <div class="financial-label">Marketing & Sales</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <strong>Valuation:</strong> HKD $3.2-4.0M (pre-money)
+                    </div>
+                    
+                    <ul class="feature-list">
+                        <li>Urgent market need with January 2026 deadline</li>
+                        <li>Proven high-margin training business model</li>
+                        <li>Strong unit economics: 14-month payback, 56% Year 1 ROI</li>
+                        <li>Scalable platform for consulting, software, expansion</li>
+                        <li>Experienced team with deep HK regulatory expertise</li>
+                    </ul>
+                </div>
+                
+                <div class="slide-footer">
+                    <div class="logo">Investment</div>
+                    <div>HKD $800,000 | 20-25% equity</div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Team -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Slide 9</div>
+                    <h2 class="slide-title">Team & Advisors</h2>
+                    <p class="slide-subtitle">Experienced leadership with industry connections</p>
+                </div>
+                
+                <div class="slide-content">
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-avatar">[Y]</div>
+                            <div class="team-name">[Your Name]</div>
+                            <div class="team-role">Founder & CEO</div>
+                            <div style="font-size: 0.875rem; color: #cbd5e1; margin-top: 0.5rem;">
+                                15+ years cybersecurity<br>
+                                HK regulatory network<br>
+                                Industry recognition
+                            </div>
+                        </div>
+                        
+                        <div class="team-card">
+                            <div class="team-avatar">👨‍🏫</div>
+                            <div class="team-name">Lead Instructor</div>
+                            <div class="team-role">To be hired</div>
+                            <div style="font-size: 0.875rem; color: #cbd5e1; margin-top: 0.5rem;">
+                                Former HK regulator<br>
+                                10+ years experience<br>
+                                Training certified
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning" style="margin-top: 1.5rem;">
+                        <strong>Partnerships:</strong> HKCERT (certification) • HKPC (delivery) • Critical infrastructure operators (case studies)
+                    </div>
+                </div>
+                
+                <div class="slide-footer">
+                    <div class="logo">Team</div>
+                    <div>Expert advisors available</div>
+                </div>
+            </div>
+
+            <!-- Slide 10: Thank You -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Slide 10</div>
+                    <h2 class="slide-title">Thank You</h2>
+                    <p class="slide-subtitle">Let's secure Hong Kong's critical infrastructure together</p>
+                </div>
+                
+                <div class="slide-content">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-title">Due Diligence</div>
+                            <div class="timeline-desc">Review business plan & financials</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-title">Team Meeting</div>
+                            <div class="timeline-desc">Meet founder & advisory board</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-title">Pilot Demo</div>
+                            <div class="timeline-desc">Experience training module</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <strong>Next Steps:</strong> Term sheet within 2-3 weeks of investment decision
+                    </div>
+                    
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <div style="font-size: 1.25rem; color: #0ea5e9; font-weight: 600; margin-bottom: 0.5rem;">
+                            [Your Name]
+                        </div>
+                        <div style="color: #94a3b8; margin-bottom: 0.25rem;">
+                            Founder & CEO
+                        </div>
+                        <div style="color: #cbd5e1; font-size: 0.875rem;">
+                            [Phone] • [Email] • [Website]
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slide-footer">
+                    <div class="logo">HK CyberSecure Academy</div>
+                    <div>Confidential • February 2026</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(30, 41, 59, 0.5); border-radius: 16px;">
+            <h3 style="color: #0ea5e9; margin-bottom: 1rem;">Presentation Features</h3>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; color: #0ea5e9;">🎨</div>
+                    <div style="color: #94a3b8; font-size: 0.875rem;">Beautiful Design</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; color: #0ea5e9;">📱</div>
+                    <div style="color: #94a3b8; font-size: 0.875rem;">Responsive</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; color: #0ea5e9;">🖨️</div>
+                    <div style="color: #94a3b8; font-size: 0.875rem;">Print Ready</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; color: #0ea5e9;">💾</div>
+                    <div style="color: #94a3b8; font-size: 0.875rem;">Save as PDF</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to all slides
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => {
+                slide.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                slide.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Print button functionality
+            const printBtn = document.createElement('button');
+            printBtn.innerHTML = '🖨️ Print Presentation';
+            printBtn.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 12px;
+                font-weight: 600;
+                cursor: pointer;
+                box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+                z-index: 1000;
+            `;
+            printBtn.onclick = () => window.print();
+            document.body.appendChild(printBtn);
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    window.sc
